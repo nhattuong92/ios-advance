@@ -1,0 +1,8 @@
+target '50.AWSCognito' do
+  use_frameworks!
+  pod 'FBSDKLoginKit'
+  pod 'AWSFacebookSignIn'
+  pod 'AWSAuthUI'
+  pod 'Amplify'
+  pod 'AmplifyPlugins'
+end

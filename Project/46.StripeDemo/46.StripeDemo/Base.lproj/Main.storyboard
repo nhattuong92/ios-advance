@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Rm-Ov-psf">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Advance-->
+        <scene sceneID="8ho-B0-Jtd">
+            <objects>
+                <viewController id="Hv5-pY-2kZ" customClass="AdvanceViewController" customModule="_6_StripeDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1tD-M4-2wN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yKp-OX-T61">
+                                <rect key="frame" x="125" y="144" width="164" height="30"/>
+                                <state key="normal" title="Select payment method"/>
+                                <connections>
+                                    <action selector="selectPaymentMethod:" destination="Hv5-pY-2kZ" eventType="touchUpInside" id="gVb-j7-xsT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hBD-3M-Zy0">
+                                <rect key="frame" x="192" y="433" width="30" height="30"/>
+                                <state key="normal" title="Pay"/>
+                                <connections>
+                                    <action selector="payButtonTapped:" destination="Hv5-pY-2kZ" eventType="touchUpInside" id="cMT-q7-eiP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hBD-3M-Zy0" firstAttribute="centerX" secondItem="1tD-M4-2wN" secondAttribute="centerX" id="25R-PQ-6dv"/>
+                            <constraint firstItem="yKp-OX-T61" firstAttribute="centerX" secondItem="1tD-M4-2wN" secondAttribute="centerX" id="6ir-1a-PGa"/>
+                            <constraint firstItem="yKp-OX-T61" firstAttribute="top" secondItem="zaI-EP-Zxi" secondAttribute="top" constant="100" id="Dnb-G4-ihq"/>
+                            <constraint firstItem="hBD-3M-Zy0" firstAttribute="centerY" secondItem="1tD-M4-2wN" secondAttribute="centerY" id="sHm-Ze-REP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zaI-EP-Zxi"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Advance" id="uk5-hz-oIc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i0D-wx-Lhz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-542" y="179"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="mYt-Ph-QLw">
+            <objects>
+                <tabBarController id="6Rm-Ov-psf" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="faA-Ko-a9U">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Hv5-pY-2kZ" kind="relationship" relationship="viewControllers" id="PEb-Vh-rGk"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Bi4-lS-WWI"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Da2-ef-D3I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1460" y="-146"/>
+        </scene>
+        <!--Basic-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="BasicViewController" customModule="_6_StripeDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Basic" id="pnF-KV-c4p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-542" y="-506"/>
+        </scene>
+    </scenes>
+</document>

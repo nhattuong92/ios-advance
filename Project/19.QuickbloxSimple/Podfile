@@ -1,0 +1,7 @@
+
+target '19.QuickbloxSimple' do
+  use_frameworks!
+  pod 'QuickBlox'
+  pod 'KRProgressHUD'
+  pod 'JSQMessagesViewController'
+end
