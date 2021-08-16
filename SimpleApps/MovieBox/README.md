@@ -6,7 +6,7 @@ Xcode version: **12.5.1**
 Language: **Swift 5**
 
 ## 2. App's demonstrate
-![Alt Text](https://media.giphy.com/media/LMEeRmMlFyZxtJfuhV/giphy.gif)
+![Alt Text](./demonstrate.gif)
 
 ## 3. What I have done in this app
 * Wrote 65 unit tests, covered 83%. It includes testing API calls, view models, view controllers and extensions.
