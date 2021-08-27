@@ -9,6 +9,16 @@
 import Foundation
 import Alamofire
 
+struct ResponseError: Codable {
+    let statusMessage: String?
+    let statusCode: Int?
+    
+    private enum CodingKeys: String, CodingKey {
+        case statusMessage = "status_message"
+        case statusCode = "status_code"
+    }
+}
+
 enum APIError: Error, Equatable {
     case noInternet
     case knownError(code: Int)
@@ -30,7 +40,7 @@ enum APIError: Error, Equatable {
 }
 
 extension AFError {
-    func mapToAPIError() -> APIError {
+    func mapToAPIError(responseData data: Data?) -> APIError {
         switch self {
         case .sessionTaskFailed(let error):
             if let error = error as? URLError, error.code == URLError.notConnectedToInternet {
@@ -38,7 +48,11 @@ extension AFError {
             }
             return .unknownError
         case .responseValidationFailed:
-            return .knownError(code: 999)
+            guard let data = data,
+                  let error = try? JSONDecoder().decode(ResponseError.self, from: data),
+                  let code = error.statusCode
+            else { return .unknownError }
+            return .knownError(code: code)
         case .responseSerializationFailed:
             return .serialization
         default:

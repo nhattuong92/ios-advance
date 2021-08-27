@@ -45,7 +45,7 @@ final class NetworkManager: NetworkManagerType {
                 case .success(let data):
                     completion(.success(data))
                 case .failure(let error):
-                    completion(.failure(error.mapToAPIError()))
+                    completion(.failure(error.mapToAPIError(responseData: response.data)))
                 }
         }
     }
@@ -66,7 +66,7 @@ final class NetworkManager: NetworkManagerType {
                 case .success(let data):
                     completion(.success(data))
                 case .failure(let error):
-                    completion(.failure(error.mapToAPIError()))
+                    completion(.failure(error.mapToAPIError(responseData: response.data)))
                 }
         }
     }
@@ -86,7 +86,7 @@ final class NetworkManager: NetworkManagerType {
                 case .success(let data):
                     completion(.success(data))
                 case .failure(let error):
-                    completion(.failure(error.mapToAPIError()))
+                    completion(.failure(error.mapToAPIError(responseData: response.data)))
                 }
         }
     }

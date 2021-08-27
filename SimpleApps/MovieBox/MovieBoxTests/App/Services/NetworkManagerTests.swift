@@ -51,17 +51,14 @@ final class NetworkManagerTests: XCTestCase {
     }
     
     private func givenErrorData() -> Data {
-        let error = """
-            "status_message": "This is error",
-            "status_code": -1
-            """
+        let error = ResponseError(statusMessage: "This is error", statusCode: 987)
         let data = try? JSONEncoder().encode(error)
         return data ?? Data()
     }
     
     private func givenDummyData() -> Data {
         let dummy = """
-            "abc": "xyz"
+            {"abc": "xyz"}
             """
         let data = try? JSONEncoder().encode(dummy)
         return data ?? Data()
@@ -163,7 +160,7 @@ final class NetworkManagerTests: XCTestCase {
         }
         wait(for: [promise], timeout: 1)
         // then
-        XCTAssertEqual(result, .knownError(code: -1))
+        XCTAssertEqual(result, .knownError(code: 987))
     }
     
     // MARK: - getMovies
@@ -262,7 +259,7 @@ final class NetworkManagerTests: XCTestCase {
         }
         wait(for: [promise], timeout: 1)
         // then
-        XCTAssertEqual(result, .knownError(code: -1))
+        XCTAssertEqual(result, .knownError(code: 987))
     }
     
     // MARK: - getMovieDetail
@@ -364,6 +361,6 @@ final class NetworkManagerTests: XCTestCase {
         }
         wait(for: [promise], timeout: 1)
         // then
-        XCTAssertEqual(result, .knownError(code: -1))
+        XCTAssertEqual(result, .knownError(code: 987))
     }
 }
