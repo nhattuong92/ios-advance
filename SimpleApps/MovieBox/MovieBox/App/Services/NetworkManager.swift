@@ -9,9 +9,9 @@
 import Alamofire
 
 protocol NetworkManagerType {
-    func getPosters(completion: @escaping (Swift.Result<MovieResponse, AFError>) -> Void)
-    func getMovies(page: Int, completion: @escaping (Swift.Result<MovieResponse, AFError>) -> Void)
-    func getMovieDetail(id: Int, completion: @escaping (Swift.Result<MovieDetail, AFError>) -> Void)
+    func getPosters(completion: @escaping (Swift.Result<MovieResponse, APIError>) -> Void)
+    func getMovies(page: Int, completion: @escaping (Swift.Result<MovieResponse, APIError>) -> Void)
+    func getMovieDetail(id: Int, completion: @escaping (Swift.Result<MovieDetail, APIError>) -> Void)
 }
 
 final class NetworkManager: NetworkManagerType {
@@ -30,7 +30,7 @@ final class NetworkManager: NetworkManagerType {
     }
     
     /// https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=undefined&api_key=55957fcf3ba81b137f8fc01ac5a31fb5
-    func getPosters(completion: @escaping (Swift.Result<MovieResponse, AFError>) -> Void) {
+    func getPosters(completion: @escaping (Swift.Result<MovieResponse, APIError>) -> Void) {
         let params: Parameters = [
             "language": "en-US",
             "page": "undefined",
@@ -45,13 +45,13 @@ final class NetworkManager: NetworkManagerType {
                 case .success(let data):
                     completion(.success(data))
                 case .failure(let error):
-                    completion(.failure(error))
+                    completion(.failure(error.mapToAPIError()))
                 }
         }
     }
     
     /// https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=55957fcf3ba81b137f8fc01ac5a31fb5
-    func getMovies(page: Int, completion: @escaping (Swift.Result<MovieResponse, AFError>) -> Void) {
+    func getMovies(page: Int, completion: @escaping (Swift.Result<MovieResponse, APIError>) -> Void) {
         let params: Parameters = [
             "language": "en-US",
             "page": page,
@@ -66,13 +66,13 @@ final class NetworkManager: NetworkManagerType {
                 case .success(let data):
                     completion(.success(data))
                 case .failure(let error):
-                    completion(.failure(error))
+                    completion(.failure(error.mapToAPIError()))
                 }
         }
     }
     
     /// https://api.themoviedb.org/3/genre/movie/list?api_key=55957fcf3ba81b137f8fc01ac5a31fb5&language=en-US
-    func getMovieDetail(id: Int, completion: @escaping (Swift.Result<MovieDetail, AFError>) -> Void) {
+    func getMovieDetail(id: Int, completion: @escaping (Swift.Result<MovieDetail, APIError>) -> Void) {
         let params: Parameters = [
             "language": "en-US",
             "api_key": Constants.apiKey
@@ -86,7 +86,7 @@ final class NetworkManager: NetworkManagerType {
                 case .success(let data):
                     completion(.success(data))
                 case .failure(let error):
-                    completion(.failure(error))
+                    completion(.failure(error.mapToAPIError()))
                 }
         }
     }

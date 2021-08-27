@@ -14,8 +14,8 @@ protocol MoviesListViewModelType {
     func getMovie(byIndex index: Int) -> Movie
     func getNumberOfPoster() -> Int
     func getPoster(byIndex index: Int) -> Movie
-    func loadMoreMovies(completion: @escaping (Swift.Result<Void, AFError>) -> Void)
-    func getMovieDetail(movieId id: Int, completion: @escaping (Swift.Result<MovieDetail, AFError>) -> Void)
+    func loadMoreMovies(completion: @escaping (Swift.Result<Void, APIError>) -> Void)
+    func getMovieDetail(movieId id: Int, completion: @escaping (Swift.Result<MovieDetail, APIError>) -> Void)
 }
 
 final class MoviesListViewModel: MoviesListViewModelType {
@@ -47,7 +47,7 @@ final class MoviesListViewModel: MoviesListViewModelType {
         return poster[index]
     }
     
-    func loadMoreMovies(completion: @escaping (Swift.Result<Void, AFError>) -> Void) {
+    func loadMoreMovies(completion: @escaping (Swift.Result<Void, APIError>) -> Void) {
         currentPage += 1
         networkManager.getMovies(page: currentPage) { [weak self] result in
             guard let self = self else { return }
@@ -61,7 +61,7 @@ final class MoviesListViewModel: MoviesListViewModelType {
         }
     }
     
-    func getMovieDetail(movieId id: Int, completion: @escaping (Swift.Result<MovieDetail, AFError>) -> Void) {
+    func getMovieDetail(movieId id: Int, completion: @escaping (Swift.Result<MovieDetail, APIError>) -> Void) {
         networkManager.getMovieDetail(id: id, completion: completion)
     }
 }
