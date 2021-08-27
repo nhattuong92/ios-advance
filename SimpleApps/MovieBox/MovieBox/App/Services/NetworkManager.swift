@@ -8,7 +8,13 @@
 
 import Alamofire
 
-final class NetworkManager {
+protocol NetworkManagerType {
+    func getPosters(completion: @escaping (Swift.Result<MovieResponse, AFError>) -> Void)
+    func getMovies(page: Int, completion: @escaping (Swift.Result<MovieResponse, AFError>) -> Void)
+    func getMovieDetail(id: Int, completion: @escaping (Swift.Result<MovieDetail, AFError>) -> Void)
+}
+
+final class NetworkManager: NetworkManagerType {
     static let shared = NetworkManager(sessionManager: AF)
     private let sessionManager: Session
     private lazy var decoder: JSONDecoder = {

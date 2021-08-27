@@ -15,9 +15,9 @@ protocol SplashScreenViewModelType {
 }
 
 final class SplashScreenViewModel: SplashScreenViewModelType {
-    private let networkManager: NetworkManager
+    private let networkManager: NetworkManagerType
     
-    init(networkManager: NetworkManager = .shared) {
+    init(networkManager: NetworkManagerType = NetworkManager.shared) {
         self.networkManager = networkManager
     }
     

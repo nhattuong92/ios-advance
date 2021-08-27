@@ -21,10 +21,11 @@ protocol MoviesListViewModelType {
 final class MoviesListViewModel: MoviesListViewModelType {
     private var movies: [Movie]
     private let poster: [Movie]
-    private let networkManager: NetworkManager
+    private let networkManager: NetworkManagerType
     private var currentPage = 1
     
-    init(movies: [Movie], poster: [Movie], networkManager: NetworkManager = .shared) {
+    init(movies: [Movie], poster: [Movie],
+         networkManager: NetworkManagerType = NetworkManager.shared) {
         self.movies = movies
         self.poster = poster
         self.networkManager = networkManager
